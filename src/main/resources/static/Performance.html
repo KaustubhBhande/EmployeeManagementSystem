@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Form</title>
+</head>
+<body>
+    <h1>Performance Form</h1>
+    <form action="/performance" method="post">
+        <label for="employeeID">Employee ID:</label>
+        <input type="number" id="employeeID" name="employeeID" required><br><br>
+
+        <label for="reviewPeriod">Review Period:</label>
+        <input type="text" id="reviewPeriod" name="reviewPeriod" required><br><br>
+
+        <label for="performanceScore">Performance Score:</label>
+        <input type="number" step="0.01" id="performanceScore" name="performanceScore" required><br><br>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea><br><br>
+
+        <label for="areasForImprovement">Areas for Improvement:</label>
+        <textarea id="areasForImprovement" name="areasForImprovement" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+</head>
+<body>
+    <h1>Employee Form</h1>
+    <form action="/employee" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+
+        <label for="dateofbirth">Date of Birth:</label>
+        <input type="date" id="dateofbirth" name="dateofbirth" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+        </select><br><br>
+
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="tel" id="mobileNumber" name="mobileNumber" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br><br>
+
+        <label for="depatment">Department:</label>
+        <select id="depatment" name="depatment" required>
+            <option value="HR">HR</option>
+            <option value="ENGINEERING">Engineering</option>
+            <option value="SALES">Sales</option>
+        </select><br><br>
+
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" required><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="ACTIVE">Active</option>
+            <option value="INACTIVE">Inactive</option>
+        </select><br><br>
+
+        <label for="dateOfHire">Date of Hire:</label>
+        <input type="date" id="dateOfHire" name="dateOfHire" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
