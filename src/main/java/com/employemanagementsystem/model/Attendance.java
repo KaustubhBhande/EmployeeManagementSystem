@@ -22,27 +22,23 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "attendence")
-public class Attendence {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "attendance")
+public class Attendance {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "attendance_id")
+    private Integer attendanceID;
 
-	@Column(name = "attendence_id")
-	private Integer attendenceID;
-
-	@Column(name = "employee_id")
-	private Integer employeeID;
-
-	@Column(name = "date")
-	private Date date;
-	
-	@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
-	
-	@Column(name = "clockintime")
-	private Date clockInTIme;
-	
-	@Column(name = "clockouttime")
-	private Date clockOutTime;
+
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "clockintime")
+    private Date clockInTime;
+
+    @Column(name = "clockouttime")
+    private Date clockOutTime;
 }

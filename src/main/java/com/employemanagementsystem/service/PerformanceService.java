@@ -67,7 +67,7 @@ public class PerformanceService {
 		existingperformance.setAreasForImprovement(performance.getAreasForImprovement());
 		existingperformance.setFeedback(performance.getFeedback());
 		existingperformance.setReviewPeriod(performance.getReviewPeriod());
-		existingperformance.setEmployeeID(performance.getEmployeeID());
+		existingperformance.setEmployee(performance.getEmployee());
 		return performanceRepository.save(existingperformance);
 	}
 }

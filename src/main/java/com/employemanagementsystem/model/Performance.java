@@ -20,26 +20,23 @@ import lombok.ToString;
 @Entity
 @Table(name = "performance")
 public class Performance {
-	@Id
-	@Column(name = "performance_id")
-	private int performanceID;
+    @Id
+    @Column(name = "performance_id")
+    private int performanceID;
 
-	@Column(name = "employee_id")
-	private int employeeID;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
-	@Column(name = "review_period")
-	private String reviewPeriod;
+    @Column(name = "review_period")
+    private String reviewPeriod;
 
-	@Column(name = "performance_score")
-	private double performanceScore;
+    @Column(name = "performance_score")
+    private double performanceScore;
 
-	@Column(name = "feedback")
-	private String feedback;
+    @Column(name = "feedback")
+    private String feedback;
 
-	@Column(name = "areas_for_improvement")
-	private String areasForImprovement;
-	
-	@ManyToOne
-	@JoinColumn(name = "employee_id")
-	private Employee employee;
+    @Column(name = "areas_for_improvement")
+    private String areasForImprovement;
 }

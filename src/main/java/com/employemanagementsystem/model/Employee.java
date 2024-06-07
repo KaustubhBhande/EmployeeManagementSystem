@@ -31,52 +31,52 @@ import lombok.ToString;
 @Entity
 @Table(name = "employee")
 public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "employee_id")
-	private Integer employeeID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
+    private Integer employeeID;
 
-	@Column(name = "employee_firstname", unique = true, length = 128)
-	private String firstName;
+    @Column(name = "employee_firstname", unique = true, length = 128)
+    private String firstName;
 
-	@Column(name = "employee_lastname", length = 128)
-	private String lastName;
+    @Column(name = "employee_lastname", length = 128)
+    private String lastName;
 
-	@Column(name = "employee_dateofbirth")
-	private Date dateofbirth;
+    @Column(name = "employee_dateofbirth")
+    private Date dateofbirth;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "employee_gender")
-	private Gender gender;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "employee_gender")
+    private Gender gender;
 
-	@Column(name = "employee_mobilenumber", unique = true)
-	private Integer mobileNumber;
+    @Column(name = "employee_mobilenumber", unique = true)
+    private Integer mobileNumber;
 
-	@Column(name = "employee_email")
-	private String email;
+    @Column(name = "employee_email")
+    private String email;
 
-	@Column(name = "employee_address")
-	private String address;
+    @Column(name = "employee_address")
+    private String address;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "employee_department")
-	private Department depatment;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "employee_department")
+    private Department department;
 
-	@Column(name = "employee_jobtitle")
-	private String jobTitle;
+    @Column(name = "employee_jobtitle")
+    private String jobTitle;
 
-	@Column(name = "employee_status")
-	private Status status;
+    @Column(name = "employee_status")
+    private Status status;
 
-	@Column(name = "employee_dateofhire")
-	private Date dateOfHire;
+    @Column(name = "employee_dateofhire")
+    private Date dateOfHire;
 
-	@OneToMany(mappedBy = "employeeID")
-	private List<Performance> performances;
+    @OneToMany(mappedBy = "employee")
+    private List<Performance> performances;
 
-	@OneToMany(mappedBy = "employeeID")
-	private List<Attendence> attendances;
+    @OneToMany(mappedBy = "employee")
+    private List<Attendance> attendances;
 
-	@OneToOne(mappedBy = "employeeID")
-	private Salary salary;
+    @OneToOne(mappedBy = "employee")
+    private Salary salary;
 }

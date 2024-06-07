@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.employemanagementsystem.model.Attendence;
+import com.employemanagementsystem.model.Attendance;
 import com.employemanagementsystem.repository.AttendenceRepository;
 
 @Service
@@ -15,11 +15,11 @@ public class AttendenceSerivce {
 	@Autowired
 	private AttendenceRepository attendenceRepository;
 
-	public List<String> validate(Attendence attendence) {
+	public List<String> validate(Attendance attendence) {
 
 		List<String> error = new ArrayList<>();
 
-		if (attendence.getClockInTIme() == null) {
+		if (attendence.getClockInTime() == null) {
 			error.add("ClockInTime Cannot Be Empty");
 		}
 		if (attendence.getClockOutTime() == null) {
@@ -32,20 +32,20 @@ public class AttendenceSerivce {
 		return error;
 	}
 
-	public Page<Attendence> getAllAttendence1(Pageable pageable) {
+	public Page<Attendance> getAllAttendence1(Pageable pageable) {
 		return attendenceRepository.findAll(pageable);
 	}
 
-	public List<Attendence> getAllAttendence() {
-		return (List<Attendence>) this.attendenceRepository.findAll();
+	public List<Attendance> getAllAttendence() {
+		return (List<Attendance>) this.attendenceRepository.findAll();
 
 	}
 
-	public Optional<Attendence> getAttendence(Integer id) {
+	public Optional<Attendance> getAttendence(Integer id) {
 		return this.attendenceRepository.findById(id);
 	}
 
-	public Attendence addAttendence(Attendence attendence) {
+	public Attendance addAttendence(Attendance attendence) {
 		return this.attendenceRepository.save(attendence);
 	}
 
@@ -60,13 +60,13 @@ public class AttendenceSerivce {
 		}
 	}
 
-	public Attendence updateAttendence(Integer id, Attendence attendence) {
-		Attendence existingattendence = attendenceRepository.findById(id).orElse(null);
-		existingattendence.setClockInTIme(attendence.getClockInTIme());
+	public Attendance updateAttendence(Integer id, Attendance attendence) {
+		Attendance existingattendence = attendenceRepository.findById(id).orElse(null);
+		existingattendence.setClockInTime(attendence.getClockInTime());
 		existingattendence.setClockOutTime(attendence.getClockOutTime());
 		existingattendence.setDate(attendence.getDate());
-		existingattendence.setAttendenceID(attendence.getAttendenceID());
-		existingattendence.setEmployeeID(attendence.getEmployeeID());
+		existingattendence.setAttendanceID(attendence.getAttendanceID());
+		existingattendence.setEmployee(attendence.getEmployee());
 		return attendenceRepository.save(existingattendence);
 	}
 }

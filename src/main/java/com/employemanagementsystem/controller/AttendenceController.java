@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.employemanagementsystem.model.Attendence;
+import com.employemanagementsystem.model.Attendance;
 import com.employemanagementsystem.service.AttendenceSerivce;
 
 @RestController
@@ -28,7 +28,7 @@ public class AttendenceController {
 	@GetMapping("/all")
 	public ResponseEntity<?> getCategories() {
 
-		List<Attendence> attendence = attendenceService.getAllAttendence();
+		List<Attendance> attendence = attendenceService.getAllAttendence();
 		if (attendence.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Attendence not found");
 		}
@@ -36,7 +36,7 @@ public class AttendenceController {
 	}
 
 	@GetMapping("")
-	public Page<Attendence> getAttendenceWithPagination(@RequestParam(defaultValue = "0") int page,
+	public Page<Attendance> getAttendenceWithPagination(@RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "5") int pageSize) {
 		Pageable pageable = PageRequest.of(page, pageSize);
 		return attendenceService.getAllAttendence1(pageable);
@@ -46,19 +46,19 @@ public class AttendenceController {
 
 	public ResponseEntity<?> getAttendenceById(@PathVariable Integer id) {
 
-		Optional<Attendence> AttendenceById = attendenceService.getAttendence(id);
+		Optional<Attendance> AttendenceById = attendenceService.getAttendence(id);
 		if (AttendenceById.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Attendence By Id Not Found");
 
 		} else {
-			Attendence Attendence = AttendenceById.get();
+			Attendance Attendence = AttendenceById.get();
 
 			return ResponseEntity.ok().body(Attendence);
 		}
 	}
 
 	@PostMapping(" ")
-	public ResponseEntity<?> addAttendence(@RequestBody Attendence attendence) {
+	public ResponseEntity<?> addAttendence(@RequestBody Attendance attendence) {
 		List<String> errors = attendenceService.validate(attendence);
 		if (!errors.isEmpty()) {
 			return ResponseEntity.badRequest().body(errors);
@@ -88,14 +88,14 @@ public class AttendenceController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateAttendence(@PathVariable Integer id, @RequestBody Attendence attendence) {
+	public ResponseEntity<?> updateAttendence(@PathVariable Integer id, @RequestBody Attendance attendence) {
 
 		List<String> errors = attendenceService.validate(attendence);
 		if (!errors.isEmpty()) {
 			return ResponseEntity.badRequest().body(errors);
 		}
 
-		Optional<Attendence> existingAttendence = attendenceService.getAttendence(id);
+		Optional<Attendance> existingAttendence = attendenceService.getAttendence(id);
 		if (!existingAttendence.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Attendence with ID " + id + "Not Found.");
 		}

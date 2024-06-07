@@ -9,7 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,19 +26,18 @@ import lombok.ToString;
 @Table(name = "salary")
 public class Salary {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "salary_id")
+    private Integer salaryID;
 
-	@Column(name = "salary_id")
-	private Integer salaryID;
+    @Column(name = "base_salary")
+    private BigDecimal baseSalary;
 
-	@Column(name = "employee_id")
-	private int employeeID;
+    @Column(name = "pay_date")
+    private Date payDate;
 
-	@Column(name = "base_salary")
-	private BigDecimal baseSalary;
-
-	@Column(name = "pay_date")
-	private Date payDate;
-
+    @OneToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    private Employee employee;
 }
